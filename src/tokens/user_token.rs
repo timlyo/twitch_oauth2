@@ -1,3 +1,4 @@
+use serde_derive::{Deserialize, Serialize};
 use twitch_types::{UserId, UserIdRef, UserName, UserNameRef};
 
 use super::errors::ValidationError;
@@ -431,6 +432,7 @@ impl TwitchToken for UserToken {
 ///     # Ok::<(), Box<dyn std::error::Error>>(())
 ///     # };
 ///     ```
+#[derive(Serialize, Deserialize)]
 pub struct UserTokenBuilder {
     pub(crate) scopes: Vec<Scope>,
     pub(crate) csrf: Option<crate::types::CsrfToken>,
